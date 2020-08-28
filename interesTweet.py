@@ -22,7 +22,7 @@ api = tweepy.API(auth)
 
 if len(sys.argv) != 2:
     print(
-        'Usage - Pass one argument.  The twitter profile name. Do not include the @.\n Example: "python interesTweet.py nytimes"')
+        'Usage - Pass one argument.  The twitter profile name. Do not include the @.\n Example: "python interesTweet.py johnsmith"')
     sys.exit(1)
 
 user = api.get_user(sys.argv[1])
@@ -39,7 +39,6 @@ ignore_words = ['AND', "WE", "THAT", "THAN", "THEM", 'OF', "GET", "SO", "SOME", 
 ignore_chars = """.,'!-/:?"'#@"""
 
 num = user.friends_count
-
 print("Analyzing {} accounts...\n".format(num))
 
 for count, friend in enumerate(tweepy.Cursor(api.friends_ids, id=sys.argv[1]).items()):
